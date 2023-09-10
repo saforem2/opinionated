@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "qmd/posts.html",
+    "href": "qmd/posts.html",
+    "title": "Listing Example",
+    "section": "",
+    "text": "You can review the following documents for additional information:\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items\n\n\nLearn more about Quarto here.\n\n\n\n\n Back to topCitationBibTeX citation:@online{foreman2023,\n  author = {Foreman, Sam},\n  title = {Quarto {Site} {Template}},\n  date = {2023-09-10},\n  url = {https://saforem2.github.io/opinionated},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nForeman, Sam. 2023. “Quarto Site Template.” September 10,\n2023. https://saforem2.github.io/opinionated."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Opinionated",
+    "section": "",
+    "text": "opinionated provides simple, clean stylesheets for plotting with matplotlib or seaborn.\nIt’s modeled and named after hrbrthemes in R, by Bob Rudis, which are “Opinionated, typographic-centric ggplot2 themes”. It’s not meant to be an exact clone though, I have made a few different choices. The python code takes a lot of inspiration from Dominik Haitz’s mplcyberpunk.\nThe main application I had in mind was to increase the quality of plots in Google-colab-environments, where there is a very small range of preinstalled fonts. The package therefore automatically downloads fonts from GoogleFonts. But I think everything should also work on your local machine. Be aware though, that it’s not super well-tested, and might e. g. fail with facets.\n\n\n$ python3 -m pip install opinionated\n\n\n\nThe package is very simple to use, you just import it and set the style you want:\nimport opinionated\nimport matplotlib.pyplot as plt\nplt.style.use(\"opinionated_rc\")\nimport colormaps as cmaps \nNote that opinionated automatically installs colormaps by Pratiman Patel, which provides an easy interface to some of the best colormap-collections in python, like cmocean, scientific or Cartocolors, among others. The usual matplotlib colormaps still work, of course!\nThen you do your plotting:\nf, ax = plt.subplots(figsize=(10, 7))\nsns.scatterplot(x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\", data=penguins, alpha=.7, s= 70, palette=cmaps.bold[2:5]._colors)\nAnd finally, you can slap on some additional information, using some convenience functions with reasonable defaults. Of course, the usual ways of setting titles, legends, etc. still work.\nopinionated.add_legend(title='Species')\nopinionated.add_attribution('by Maximilian Noichl')\nopinionated.set_title_and_suptitle('Penguins!','They are an excellent type of bird!')\nHere’s the result:\n\nThis certainly does look better than what the defaults would give you, right? –\n\n\n\n\nThe style opinionated_rc that we used above uses the font Roboto Condensed, which is my favorite from the original hrbrthemes-package. But there are other styles that you can use. Generally, I would advise using the narrower fonts for plots with more, and the wider ones for fonts with less text. Right now, out of the box we also have available:\nopinionated_minimal which uses IBM Plex Sans (with some additional stylistic opinions):\nplt.style.use(\"opinionated_min\")\n\nopinionated_sg which uses Florian Karsten’s lovely space Space Grotesk font:\nplt.style.use(\"opinionated_sg\")\n\nopinionated_fsc which uses Fira Sans Condensed:\n\nopinionated_tw which uses Titillium Web font, another classic:\n\nopinionated_m which uses Montserrat font, a relatively wide font to make bold points:\n\nand\nopinionated_j which uses Jost, a nice geometric font by indestructible type*:\n\n\n\n\nYou can download whichever font you want from Google Fonts, using the code in the package. So nothing will keep you from doing something like:\nfrom opinionated.core import download_googlefont\ndownload_googlefont('Great Vibes', add_to_cache=True)\nplt.rc('font', family='Great Vibes')\nf, ax = plt.subplots(figsize=(10, 7))\nplt.scatter(penguins[\"bill_length_mm\"],penguins[\"flipper_length_mm\"],  marker=\"$\\u2764$\", s=100,c='#a81a26',alpha = 0.7)\nWhich will result in something like the following:\n\n\n\n\nIf you want to get an overview of the installed fonts, you can run:\nfrom opinionated.core import show_installed_fonts\nshow_installed_fonts()\n\n\n\n\nMake it play nice with facets!\n\n\n\n\nIf you use this software in your work, feel free to cite it using the following metadata:\nAPA:\nNoichl, M. (2023). Opinionated: Simple, Clean Stylesheets for Plotting with Matplotlib and Seaborn (Version 0.0.2.8) [Computer software]. https://doi.org/10.5281/zenodo.8329780\nBibTeX:\n@software{Noichl_Opinionated_Simple_Clean_2023,\n    author = {Noichl, Maximilian},\n    doi = {10.5281/zenodo.8329780},\n    month = aug,\n    title = {{Opinionated: Simple, Clean Stylesheets for Plotting with Matplotlib and Seaborn}},\n    url = {https://github.com/MNoichl/opinionated},\n    version = {0.0.2.8},\n    year = {2023}\n}\n\n\n\n\nhrbrmstr/hrbrthemes\ndhaitz/mplcyberpunk\n\n\n\n\n\n\nfrom datetime import date\nprint(f\"Last updated: {date.today().strftime('%d %B %y')}\")\n\nLast updated: 10 September 23"
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "Opinionated",
+    "section": "",
+    "text": "$ python3 -m pip install opinionated"
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "Opinionated",
+    "section": "",
+    "text": "The package is very simple to use, you just import it and set the style you want:\nimport opinionated\nimport matplotlib.pyplot as plt\nplt.style.use(\"opinionated_rc\")\nimport colormaps as cmaps \nNote that opinionated automatically installs colormaps by Pratiman Patel, which provides an easy interface to some of the best colormap-collections in python, like cmocean, scientific or Cartocolors, among others. The usual matplotlib colormaps still work, of course!\nThen you do your plotting:\nf, ax = plt.subplots(figsize=(10, 7))\nsns.scatterplot(x=\"bill_length_mm\", y=\"flipper_length_mm\", hue=\"species\", data=penguins, alpha=.7, s= 70, palette=cmaps.bold[2:5]._colors)\nAnd finally, you can slap on some additional information, using some convenience functions with reasonable defaults. Of course, the usual ways of setting titles, legends, etc. still work.\nopinionated.add_legend(title='Species')\nopinionated.add_attribution('by Maximilian Noichl')\nopinionated.set_title_and_suptitle('Penguins!','They are an excellent type of bird!')\nHere’s the result:\n\nThis certainly does look better than what the defaults would give you, right? –"
+  },
+  {
+    "objectID": "index.html#styles",
+    "href": "index.html#styles",
+    "title": "Opinionated",
+    "section": "",
+    "text": "The style opinionated_rc that we used above uses the font Roboto Condensed, which is my favorite from the original hrbrthemes-package. But there are other styles that you can use. Generally, I would advise using the narrower fonts for plots with more, and the wider ones for fonts with less text. Right now, out of the box we also have available:\nopinionated_minimal which uses IBM Plex Sans (with some additional stylistic opinions):\nplt.style.use(\"opinionated_min\")\n\nopinionated_sg which uses Florian Karsten’s lovely space Space Grotesk font:\nplt.style.use(\"opinionated_sg\")\n\nopinionated_fsc which uses Fira Sans Condensed:\n\nopinionated_tw which uses Titillium Web font, another classic:\n\nopinionated_m which uses Montserrat font, a relatively wide font to make bold points:\n\nand\nopinionated_j which uses Jost, a nice geometric font by indestructible type*:"
+  },
+  {
+    "objectID": "index.html#additional-fonts",
+    "href": "index.html#additional-fonts",
+    "title": "Opinionated",
+    "section": "",
+    "text": "You can download whichever font you want from Google Fonts, using the code in the package. So nothing will keep you from doing something like:\nfrom opinionated.core import download_googlefont\ndownload_googlefont('Great Vibes', add_to_cache=True)\nplt.rc('font', family='Great Vibes')\nf, ax = plt.subplots(figsize=(10, 7))\nplt.scatter(penguins[\"bill_length_mm\"],penguins[\"flipper_length_mm\"],  marker=\"$\\u2764$\", s=100,c='#a81a26',alpha = 0.7)\nWhich will result in something like the following:"
+  },
+  {
+    "objectID": "index.html#checking-your-installed-fonts",
+    "href": "index.html#checking-your-installed-fonts",
+    "title": "Opinionated",
+    "section": "",
+    "text": "If you want to get an overview of the installed fonts, you can run:\nfrom opinionated.core import show_installed_fonts\nshow_installed_fonts()"
+  },
+  {
+    "objectID": "index.html#to-do",
+    "href": "index.html#to-do",
+    "title": "Opinionated",
+    "section": "",
+    "text": "Make it play nice with facets!"
+  },
+  {
+    "objectID": "index.html#citation",
+    "href": "index.html#citation",
+    "title": "Opinionated",
+    "section": "",
+    "text": "If you use this software in your work, feel free to cite it using the following metadata:\nAPA:\nNoichl, M. (2023). Opinionated: Simple, Clean Stylesheets for Plotting with Matplotlib and Seaborn (Version 0.0.2.8) [Computer software]. https://doi.org/10.5281/zenodo.8329780\nBibTeX:\n@software{Noichl_Opinionated_Simple_Clean_2023,\n    author = {Noichl, Maximilian},\n    doi = {10.5281/zenodo.8329780},\n    month = aug,\n    title = {{Opinionated: Simple, Clean Stylesheets for Plotting with Matplotlib and Seaborn}},\n    url = {https://github.com/MNoichl/opinionated},\n    version = {0.0.2.8},\n    year = {2023}\n}"
+  },
+  {
+    "objectID": "index.html#inspiration",
+    "href": "index.html#inspiration",
+    "title": "Opinionated",
+    "section": "",
+    "text": "hrbrmstr/hrbrthemes\ndhaitz/mplcyberpunk"
+  },
+  {
+    "objectID": "index.html#bi-signpost-appendix",
+    "href": "index.html#bi-signpost-appendix",
+    "title": "Opinionated",
+    "section": "",
+    "text": "from datetime import date\nprint(f\"Last updated: {date.today().strftime('%d %B %y')}\")\n\nLast updated: 10 September 23"
+  },
+  {
+    "objectID": "qmd/build_example_plots.html",
+    "href": "qmd/build_example_plots.html",
+    "title": "Opinionated",
+    "section": "",
+    "text": "GitHub\n\n\n\nOpen in Colab"
+  },
+  {
+    "objectID": "qmd/build_example_plots.html#helper-functions",
+    "href": "qmd/build_example_plots.html#helper-functions",
+    "title": "Opinionated",
+    "section": "Helper Functions",
+    "text": "Helper Functions\n\ndef savefig(\n        fname: str,\n        outdir: Optional[os.PathLike] = None,\n):\n    outdir = OUTPUT_DIR if outdir is None else outdir\n    # fig = plt.gcf()\n    ext = {'png', 'svg'}\n    print(f\"Saving {fname} to {outdir}\")\n    for ext in ext:\n        edir = Path(outdir).joinpath(f\"{ext}s\")\n        edir.mkdir(exist_ok=True, parents=True)\n        outfile = Path(edir).joinpath(f\"{fname}.{ext}\")\n        plt.savefig(outfile, dpi=450, bbox_inches='tight')\n\n\nimport os\nimport seaborn as sns\nfrom opinionated import STYLES, set_title_and_suptitle, add_attribution\nimport colormaps as cmaps\n\ndef make_plot(name: str) -&gt; tuple[plt.Figure, plt.Axes]:\n    fig, ax = plt.subplots()\n    cmap = sns.color_palette(list(cmaps.bold[2:5]._colors))\n    sns.scatterplot(\n        x=\"bill_length_mm\",\n        y=\"flipper_length_mm\",\n        data=penguins,\n        hue='species',\n        style='species',\n        palette=cmap,\n        alpha=0.75,\n    )\n    # opinionated.add_legend()\n    plt.legend(bbox_to_anchor=(1.01, 0.5), loc='center left')\n    set_title_and_suptitle(\n        \"Penguins\",\n        \"An Excellent Bird!\"\n    )\n    savefig(f\"penguins_{name}\")\n    return fig, ax\n\n\nplt.style.use('default')\nmake_plot('default')\nreload_styles()\n\nSaving penguins_default to /Users/samforeman/projects/saforem2/opinionated/outputs"
+  },
+  {
+    "objectID": "qmd/build_example_plots.html#all-default-styles",
+    "href": "qmd/build_example_plots.html#all-default-styles",
+    "title": "Opinionated",
+    "section": "All Default Styles",
+    "text": "All Default Styles\n\nwith plt.style.context('default'):\n    make_plot('default')\n\nfor name, stylefile in STYLES.items():\n    with plt.style.context(Path(stylefile).as_posix()):\n        fig, ax = make_plot(name)\n        plt.show()\n\nSaving penguins_default to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_minimal to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinions to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_min to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_fsc to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_tw to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_rc to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_minimal-new to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_m to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_bw to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_sg to /Users/samforeman/projects/saforem2/opinionated/outputs\nSaving penguins_opinionated_j to /Users/samforeman/projects/saforem2/opinionated/outputs"
+  },
+  {
+    "objectID": "qmd/build_example_plots.html#imports-setup",
+    "href": "qmd/build_example_plots.html#imports-setup",
+    "title": "Opinionated",
+    "section": "Imports / Setup",
+    "text": "Imports / Setup\n\n# ruff: noqa: E402, F401\n%load_ext autoreload\n%autoreload 2\nfrom typing import Optional\nfrom opinionated import reload_styles\nimport seaborn as sns\nimport opinionated\nfrom matplotlib import font_manager as fm, pyplot as plt\n\nimport os\nimport shutil\nimport matplotlib\nfrom pathlib import Path\nimport pandas as pd\n\nfrom opinionated import PROJECT_DIR, STYLES_DIR\n%matplotlib inline\nimport matplotlib_inline\nmatplotlib_inline.backend_inline.set_matplotlib_formats('svg')\n\nThe autoreload extension is already loaded. To reload it, use:\n  %reload_ext autoreload\n\n\n\nOUTPUT_DIR = PROJECT_DIR.joinpath('outputs')\nOUTPUT_DIR.mkdir(parents=True, exist_ok=True)\n\npenguins = sns.load_dataset(\"penguins\")"
+  }
+]
